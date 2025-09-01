@@ -1,5 +1,4 @@
-# VerifyPlus
-# VerifyPlus - WordPress Product Authentication Plugin
+# VerifyPlus - WordPress Code/Product Authentication Plugin
 
 ## 📋 Description
 
