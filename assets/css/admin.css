@@ -1,0 +1,2307 @@
+/**
+ * Code Authentication Admin Styles - Modern Design
+ * 
+ * Styles for the admin panel interface with contemporary design
+ * 
+ * @since 1.0.0
+ */
+
+/* ==========================================================================
+   CSS Variables for Consistent Theming
+   ========================================================================== */
+
+:root {
+    --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    --secondary-gradient: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    --success-gradient: linear-gradient(135deg, #2ed573 0%, #1e90ff 100%);
+    --danger-gradient: linear-gradient(135deg, #ff6b6b 0%, #ee5a24 100%);
+    --warning-gradient: linear-gradient(135deg, #ffa726 0%, #ff7043 100%);
+    
+    --primary-color: #667eea;
+    --secondary-color: #f093fb;
+    --success-color: #2ed573;
+    --danger-color: #ff6b6b;
+    --warning-color: #ffa726;
+    
+    --text-primary: #000000;
+    --text-secondary: #333333;
+    --text-light: #555555;
+    
+    --bg-primary: #ffffff;
+    --bg-secondary: #f8f9fa;
+    --bg-tertiary: #ecf0f1;
+    
+    --border-color: #e1e5e9;
+    --border-radius: 12px;
+    --border-radius-sm: 8px;
+    --border-radius-lg: 16px;
+    
+    --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.07);
+    --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+    --shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.15);
+    
+    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-fast: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ==========================================================================
+   General Admin Styles
+   ========================================================================== */
+
+/* Override WordPress default styles */
+.wrap {
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+.wp-admin .verifyplus-admin-page {
+    margin: 0 !important;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif !important;
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%) !important;
+    min-height: 100vh !important;
+    padding: 20px !important;
+    position: relative !important;
+    z-index: 1 !important;
+}
+
+/* Ensure our styles take precedence */
+.verifyplus-admin-page * {
+    box-sizing: border-box !important;
+}
+
+/* ==========================================================================
+   Modern Header with Glass Morphism
+   ========================================================================== */
+
+.verifyplus-header {
+    background: rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    color: var(--text-primary);
+    padding: 40px;
+    border-radius: var(--border-radius-lg);
+    margin-bottom: 30px;
+    box-shadow: var(--shadow-lg);
+    position: relative;
+    overflow: hidden;
+}
+
+.verifyplus-header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: var(--primary-gradient);
+}
+
+.verifyplus-header::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(102, 126, 234, 0.1) 0%, transparent 70%);
+    animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(-20px) rotate(180deg); }
+}
+
+.verifyplus-header h1 {
+    margin: 0;
+    font-size: 2.8em;
+    font-weight: 800;
+    background: var(--primary-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    position: relative;
+    z-index: 1;
+}
+
+.verifyplus-header p {
+    margin: 15px 0 0 0;
+    font-size: 1.2em;
+    color: var(--text-secondary);
+    font-weight: 500;
+    position: relative;
+    z-index: 1;
+}
+
+/* ==========================================================================
+   Modern Navigation Tabs
+   ========================================================================== */
+
+.nav-tab-wrapper {
+    background: rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: var(--border-radius-lg);
+    box-shadow: var(--shadow-lg);
+    margin-bottom: 30px;
+    overflow: hidden;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.nav-tab {
+    flex: 1;
+    min-width: 150px;
+    padding: 20px 25px;
+    text-decoration: none;
+    color: var(--text-secondary);
+    font-weight: 600;
+    text-align: center;
+    transition: var(--transition);
+    border: none;
+    background: transparent;
+    position: relative;
+    overflow: hidden;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.nav-tab::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transition: left 0.6s ease;
+}
+
+.nav-tab:hover::before {
+    left: 100%;
+}
+
+.nav-tab:hover {
+    background: rgba(102, 126, 234, 0.1);
+    color: var(--primary-color);
+    transform: translateY(-2px);
+}
+
+.nav-tab.nav-tab-active {
+    background: var(--primary-gradient);
+    color: white;
+    box-shadow: var(--shadow-md);
+}
+
+.nav-tab .dashicons {
+    font-size: 18px;
+    transition: var(--transition);
+}
+
+.nav-tab:hover .dashicons {
+    transform: scale(1.1) rotate(5deg);
+}
+
+/* ==========================================================================
+   Modern Content Sections
+   ========================================================================== */
+
+.verifyplus-content {
+    background: rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: var(--border-radius-lg);
+    box-shadow: var(--shadow-lg);
+    padding: 40px;
+    margin-bottom: 30px;
+    position: relative;
+    overflow: hidden;
+}
+
+.verifyplus-content::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: var(--primary-gradient);
+}
+
+.verifyplus-section {
+    margin-bottom: 50px;
+    position: relative;
+}
+
+.verifyplus-section:last-child {
+    margin-bottom: 0;
+}
+
+.verifyplus-section h2 {
+    color: var(--text-primary);
+    font-size: 2em;
+    font-weight: 700;
+    margin-bottom: 25px;
+    padding-bottom: 15px;
+    border-bottom: 2px solid var(--border-color);
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.verifyplus-section h2::before {
+    content: '';
+    width: 4px;
+    height: 30px;
+    background: var(--primary-gradient);
+    border-radius: 2px;
+}
+
+.verifyplus-section h3 {
+    color: var(--text-primary);
+    font-size: 1.4em;
+    font-weight: 600;
+    margin-bottom: 20px;
+    padding: 15px 20px;
+    background: rgba(102, 126, 234, 0.05);
+    border-radius: var(--border-radius-sm);
+    border-left: 4px solid var(--primary-color);
+}
+
+/* ==========================================================================
+   Modern Form Styles
+   ========================================================================== */
+
+.verifyplus-form {
+    max-width: 900px;
+}
+
+/* Enhanced Settings Page Styling */
+.style-sections {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-bottom: 30px;
+}
+
+.style-section {
+    background: rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: var(--border-radius-lg);
+    padding: 25px;
+    box-shadow: var(--shadow-md);
+    transition: var(--transition);
+    position: relative;
+    overflow: hidden;
+}
+
+.style-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+    transition: left 0.6s ease;
+}
+
+.style-section:hover::before {
+    left: 100%;
+}
+
+.style-section h3 {
+    color: var(--text-primary);
+    font-size: 1.3em;
+    font-weight: 600;
+    margin: 0 0 20px 0;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--primary-color);
+    position: relative;
+}
+
+.style-section h3::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 30px;
+    height: 2px;
+    background: var(--primary-gradient);
+    transition: width 0.3s ease;
+}
+
+.style-section:hover h3::after {
+    width: 50px;
+}
+
+/* Enhanced Form Groups */
+.style-section .form-group {
+    margin-bottom: 20px;
+}
+
+.style-section .form-group label {
+    display: block;
+    color: var(--text-primary);
+    font-weight: 500;
+    margin-bottom: 8px;
+    font-size: 14px;
+}
+
+.style-section .form-group input[type="text"],
+.style-section .form-group input[type="number"],
+.style-section .form-group select {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: var(--border-radius-sm);
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(10px);
+    font-size: 14px;
+    transition: var(--transition);
+    box-sizing: border-box;
+}
+
+.style-section .form-group input[type="text"]:focus,
+.style-section .form-group input[type="number"]:focus,
+.style-section .form-group select:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+    background: rgba(255, 255, 255, 0.95);
+}
+
+/* Color Picker Enhancement */
+.color-picker {
+    position: relative;
+}
+
+.color-picker::after {
+    content: '';
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 20px;
+    height: 20px;
+    border-radius: 4px;
+    border: 2px solid rgba(0, 0, 0, 0.1);
+    background: var(--current-color, #ffffff);
+    pointer-events: none;
+}
+
+/* Enhanced Tab Navigation */
+.nav-tab-wrapper {
+    background: rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: var(--border-radius-lg);
+    padding: 5px;
+    margin-bottom: 30px;
+    display: flex;
+    gap: 5px;
+    box-shadow: var(--shadow-md);
+}
+
+.nav-tab {
+    flex: 1;
+    text-align: center;
+    padding: 15px 20px;
+    background: transparent;
+    border: none;
+    border-radius: var(--border-radius-sm);
+    color: var(--text-secondary);
+    font-weight: 500;
+    cursor: pointer;
+    transition: var(--transition);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    position: relative;
+    overflow: hidden;
+}
+
+.nav-tab::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.6s ease;
+}
+
+.nav-tab:hover::before {
+    left: 100%;
+}
+
+.nav-tab:hover {
+    color: var(--text-primary);
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.nav-tab.nav-tab-active {
+    background: var(--primary-gradient);
+    color: white;
+    box-shadow: var(--shadow-sm);
+}
+
+.nav-tab .dashicons {
+    font-size: 16px;
+    transition: var(--transition);
+}
+
+.nav-tab:hover .dashicons {
+    transform: scale(1.1);
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 25px;
+    margin-bottom: 25px;
+}
+
+.form-group {
+    margin-bottom: 25px;
+    position: relative;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: 600;
+    color: var(--text-primary);
+    font-size: 0.95em;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group input[type="number"],
+.form-group input[type="url"],
+.form-group input[type="password"],
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 15px 20px;
+    border: 2px solid var(--border-color);
+    border-radius: var(--border-radius-sm);
+    font-size: 14px;
+    transition: var(--transition);
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(10px);
+    box-sizing: border-box;
+    font-weight: 500;
+    height: 48px; /* Match button height */
+    line-height: 1.4;
+}
+
+/* Specific dropdown styling to match buttons */
+.form-group select,
+select[name="action"],
+select[name="action2"],
+select[name="status"] {
+    height: 48px !important;
+    padding: 0px 15px !important;
+    font-size: 14px !important;
+    font-weight: 600 !important;
+    border: 2px solid var(--border-color) !important;
+    border-radius: var(--border-radius-sm) !important;
+    background: rgba(255, 255, 255, 0.9) !important;
+    backdrop-filter: blur(10px) !important;
+    transition: var(--transition) !important;
+    cursor: pointer !important;
+    appearance: none !important;
+    -webkit-appearance: none !important;
+    -moz-appearance: none !important;
+    background-image: url('data:image/svg+xml;charset=US-ASCII,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 4 5"><path fill="%23666" d="M2 0L0 2h4zm0 5L0 3h4z"/></svg>') !important;
+    background-repeat: no-repeat !important;
+    background-position: right 12px center !important;
+    background-size: 12px !important;
+    padding-right: 40px !important;
+}
+
+.form-group select:focus,
+select[name="action"]:focus,
+select[name="action2"]:focus,
+select[name="status"]:focus {
+    outline: none !important;
+    border-color: var(--primary-color) !important;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1) !important;
+    background: rgba(255, 255, 255, 0.95) !important;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.1);
+    transform: translateY(-2px);
+    background: rgba(255, 255, 255, 0.95);
+}
+
+.form-group textarea {
+    min-height: 120px;
+    resize: vertical;
+    line-height: 1.6;
+}
+
+.form-group .description {
+    margin-top: 8px;
+    font-size: 13px;
+    color: var(--text-secondary);
+    font-style: italic;
+}
+
+/* ==========================================================================
+   Modern Button Styles
+   ========================================================================== */
+
+.verifyplus-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 14px 28px;
+    border: none;
+    border-radius: var(--border-radius-sm);
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+    transition: var(--transition);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+    min-width: 120px;
+    height: auto;
+    line-height: 1.4;
+    white-space: nowrap;
+}
+
+.verifyplus-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transition: left 0.6s ease;
+}
+
+.verifyplus-button:hover::before {
+    left: 100%;
+}
+
+.verifyplus-button.primary {
+    background: var(--primary-gradient);
+    color: white !important;
+}
+
+.verifyplus-button.primary .dashicons {
+    color: white !important;
+}
+
+.verifyplus-button.primary:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-lg);
+}
+
+.verifyplus-button.secondary {
+    background: var(--secondary-gradient);
+    color: white !important;
+}
+
+.verifyplus-button.secondary .dashicons {
+    color: white !important;
+}
+
+.verifyplus-button.secondary:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-lg);
+}
+
+.verifyplus-button.danger {
+    background: var(--danger-gradient);
+    color: white !important;
+}
+
+.verifyplus-button.danger .dashicons {
+    color: white !important;
+}
+
+.verifyplus-button.danger:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-lg);
+}
+
+.verifyplus-button.success {
+    background: var(--success-gradient);
+    color: white !important;
+}
+
+.verifyplus-button.success .dashicons {
+    color: white !important;
+}
+
+.verifyplus-button.success:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-lg);
+}
+
+.verifyplus-button.small {
+    padding: 8px 16px;
+    font-size: 12px;
+    min-width: 80px;
+}
+
+.verifyplus-button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none !important;
+    box-shadow: var(--shadow-sm) !important;
+}
+
+.verifyplus-button .dashicons {
+    font-size: 16px;
+    transition: var(--transition);
+}
+
+.verifyplus-button:hover .dashicons {
+    transform: scale(1.1);
+}
+
+/* Ensure all gradient buttons have white text and icons */
+.verifyplus-button[class*="primary"],
+.verifyplus-button[class*="secondary"],
+.verifyplus-button[class*="danger"],
+.verifyplus-button[class*="success"],
+.verifyplus-button[class*="warning"] {
+    color: white !important;
+}
+
+/* Performance optimized - removed unused styles */
+
+/* Force white text on all violet/purple and red backgrounds */
+.verifyplus-button.primary,
+.verifyplus-button.secondary,
+.verifyplus-button.danger,
+.verifyplus-button.success,
+.verifyplus-button.warning,
+.verifyplus-button[style*="violet"],
+.verifyplus-button[style*="purple"],
+.verifyplus-button[style*="red"],
+.verifyplus-button[style*="pink"] {
+    color: white !important;
+}
+
+.verifyplus-button.primary .dashicons,
+.verifyplus-button.secondary .dashicons,
+.verifyplus-button.danger .dashicons,
+.verifyplus-button.success .dashicons,
+.verifyplus-button.warning .dashicons,
+.verifyplus-button[style*="violet"] .dashicons,
+.verifyplus-button[style*="purple"] .dashicons,
+.verifyplus-button[style*="red"] .dashicons,
+.verifyplus-button[style*="pink"] .dashicons {
+    color: white !important;
+}
+
+/* Force all button styling */
+.verifyplus-button {
+    color: white !important;
+    font-weight: 600 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.5px !important;
+    border: none !important;
+    border-radius: 8px !important;
+    padding: 14px 28px !important;
+    cursor: pointer !important;
+    transition: all 0.3s ease !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 10px !important;
+    min-width: 120px !important;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important;
+}
+
+.verifyplus-button.primary {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+    color: white !important;
+}
+
+.verifyplus-button.secondary {
+    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%) !important;
+    color: white !important;
+}
+
+.verifyplus-button.danger {
+    background: linear-gradient(135deg, #ff6b6b 0%, #ee5a24 100%) !important;
+    color: white !important;
+}
+
+.verifyplus-button.success {
+    background: linear-gradient(135deg, #2ed573 0%, #1e90ff 100%) !important;
+    color: white !important;
+}
+
+.verifyplus-button .dashicons {
+    color: white !important;
+    font-size: 16px !important;
+}
+
+/* Force checkbox column width */
+.verifyplus-table th:nth-child(1),
+.verifyplus-table td:nth-child(1),
+.verifyplus-codes-table th:nth-child(1),
+.verifyplus-codes-table td:nth-child(1) {
+    width: 25px !important;
+    min-width: 25px !important;
+    max-width: 25px !important;
+    padding: 8px 4px !important;
+    text-align: center !important;
+}
+
+/* Force white text on violet and red badges */
+.verifyplus-table .badge,
+.verifyplus-codes-table .badge,
+.verifyplus-table .status-badge,
+.verifyplus-codes-table .status-badge,
+.verifyplus-table .code-badge,
+.verifyplus-codes-table .code-badge {
+    color: white !important;
+    font-weight: 600 !important;
+}
+
+/* Specific styling for status badges */
+.verifyplus-table .status-badge.unused,
+.verifyplus-codes-table .status-badge.unused,
+.verifyplus-table .status-badge.used,
+.verifyplus-codes-table .status-badge.used {
+    color: white !important;
+}
+
+/* Specific styling for code badges */
+.verifyplus-table .code-badge,
+.verifyplus-codes-table .code-badge {
+    color: white !important;
+}
+
+
+
+.verifyplus-button[class*="primary"] .dashicons,
+.verifyplus-button[class*="secondary"] .dashicons,
+.verifyplus-button[class*="danger"] .dashicons,
+.verifyplus-button[class*="success"] .dashicons,
+.verifyplus-button[class*="warning"] .dashicons {
+    color: white !important;
+}
+
+/* ==========================================================================
+   Modern Table Styles - Fullwidth and Responsive with Column Resizing
+   ========================================================================== */
+
+/* Column Resizing Functionality */
+.verifyplus-table {
+    position: relative;
+}
+
+.verifyplus-table th {
+    position: relative;
+    user-select: none;
+}
+
+.verifyplus-table th:not(:last-child) {
+    border-right: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.verifyplus-table th .column-resizer {
+    position: absolute;
+    top: 0;
+    right: -3px;
+    width: 6px;
+    height: 100%;
+    cursor: col-resize;
+    background: transparent;
+    z-index: 10;
+    transition: background-color 0.2s ease;
+}
+
+.verifyplus-table th .column-resizer:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+.verifyplus-table th.resizing {
+    user-select: none;
+}
+
+.verifyplus-table th.resizing .column-resizer {
+    background: var(--primary-color);
+}
+
+/* Resize indicator */
+.column-resize-line {
+    position: absolute;
+    top: 0;
+    width: 2px;
+    height: 100%;
+    background: var(--primary-color);
+    pointer-events: none;
+    z-index: 1000;
+    display: none;
+}
+
+/* Body cursor when resizing */
+body.col-resize,
+body.col-resize * {
+    cursor: col-resize !important;
+}
+
+.verifyplus-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    background: rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: var(--border-radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow-lg);
+    margin-bottom: 25px;
+    table-layout: fixed; /* Equal default column widths */
+    min-width: 100%;
+}
+
+/* Auto-sizing table cells based on content */
+.verifyplus-table th,
+.verifyplus-table td {
+    white-space: nowrap;
+    padding: 18px 15px;
+    vertical-align: middle;
+    width: auto; /* Allow flexible growth */
+}
+
+/* Keep checkbox columns compact */
+.verifyplus-table th:nth-child(1),
+.verifyplus-table td:nth-child(1),
+.verifyplus-codes-table th:nth-child(1),
+.verifyplus-codes-table td:nth-child(1),
+.verifyplus-logs-table th:nth-child(1),
+.verifyplus-logs-table td:nth-child(1) {
+    width: 1%; /* Minimal width for checkboxes */
+    white-space: nowrap;
+    text-align: center;
+}
+
+/* Actions columns should also be compact */
+.verifyplus-table th:last-child,
+.verifyplus-table td:last-child {
+    width: 1%; /* Minimal width for actions */
+    white-space: nowrap;
+    text-align: center;
+}
+
+/* ==========================================================================
+   Checkbox and Auth Code Specific Styling
+   ========================================================================== */
+
+/* Small checkbox styling */
+.verifyplus-table input[type="checkbox"] {
+    width: 16px !important;
+    height: 16px !important;
+    min-width: 16px !important;
+    min-height: 16px !important;
+    margin: 0 !important;
+    cursor: pointer !important;
+    accent-color: var(--primary-color) !important;
+    border: 2px solid var(--border-color) !important;
+    border-radius: 3px !important;
+    background-color: white !important;
+    transition: var(--transition-fast) !important;
+}
+
+.verifyplus-table input[type="checkbox"]:checked {
+    background-color: var(--primary-color) !important;
+    border-color: var(--primary-color) !important;
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3e%3cpath fill='none' stroke='%23fff' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='m6 10 3 3 6-6'/%3e%3c/svg%3e") !important;
+    background-size: 12px !important;
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+}
+
+.verifyplus-table input[type="checkbox"]:hover {
+    border-color: var(--primary-color) !important;
+    transform: scale(1.1) !important;
+}
+
+/* Auth Code styling - Bigger and Bold */
+.verifyplus-table .code-badge {
+    font-size: 14px !important;
+    font-weight: 700 !important;
+    font-family: 'Courier New', monospace !important;
+    padding: 8px 12px !important;
+    border-radius: var(--border-radius-sm) !important;
+    background: var(--primary-gradient) !important;
+    color: white !important;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3) !important;
+    letter-spacing: 0.5px !important;
+    display: inline-block !important;
+    min-width: 80px !important;
+    text-align: center !important;
+    box-shadow: var(--shadow-sm) !important;
+    transition: var(--transition-fast) !important;
+}
+
+.verifyplus-table .code-badge:hover {
+    transform: translateY(-1px) !important;
+    box-shadow: var(--shadow-md) !important;
+}
+
+/* Auth code columns can auto-size based on content */
+
+/* Table Container for Responsive Design */
+.verifyplus-table-container {
+    width: 100%;
+    overflow-x: auto;
+    border-radius: var(--border-radius-lg);
+    box-shadow: var(--shadow-lg);
+    background: rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    margin-bottom: 20px;
+    position: relative;
+}
+
+/* Table scrollbar styling */
+.verifyplus-table-container::-webkit-scrollbar {
+    height: 8px;
+}
+
+.verifyplus-table-container::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+}
+
+.verifyplus-table-container::-webkit-scrollbar-thumb {
+    background: var(--primary-gradient);
+    border-radius: 4px;
+}
+
+.verifyplus-table-container::-webkit-scrollbar-thumb:hover {
+    background: var(--secondary-color);
+}
+
+.verifyplus-table-container .verifyplus-table {
+    margin-bottom: 0;
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+    background: transparent;
+    width: 100%;
+    min-width: 100%;
+    table-layout: fixed; /* Match equal width behavior */
+}
+
+.verifyplus-table th {
+    background: var(--primary-gradient);
+    color: white;
+    padding: 20px 15px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    position: relative;
+}
+
+.verifyplus-table th::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.verifyplus-table td {
+    padding: 18px 15px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    font-size: 14px;
+    transition: var(--transition);
+}
+
+.verifyplus-table tr:hover {
+    background: inherit;
+    transform: none;
+}
+
+.verifyplus-table tr:last-child td {
+    border-bottom: none;
+}
+
+/* Modern Status Badges with Colors */
+.status-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 16px;
+    border-radius: 25px;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    box-shadow: var(--shadow-sm);
+    position: relative;
+    overflow: hidden;
+    color: white;
+    border: none;
+    transition: var(--transition);
+}
+
+.status-badge::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transition: left 0.6s ease;
+}
+
+/* Badge Color Variants */
+.status-badge.success {
+    background: var(--success-gradient);
+    color: white;
+}
+
+.status-badge.error,
+.status-badge.failed {
+    background: var(--danger-gradient);
+    color: white;
+}
+
+.status-badge.warning {
+    background: var(--warning-gradient);
+    color: white;
+}
+
+.status-badge.info {
+    background: var(--primary-gradient);
+    color: white;
+}
+
+.status-badge.unused {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+}
+
+.status-badge.used {
+    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    color: white;
+}
+
+/* Badge Hover Effects */
+.status-badge:hover,
+.code-badge:hover,
+.date-badge:hover {
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-md);
+}
+
+/* Enhanced Table Styling */
+.verifyplus-table th {
+    background: var(--primary-gradient);
+    color: white;
+    padding: 20px 15px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    position: relative;
+    white-space: nowrap;
+    border: none;
+}
+
+.verifyplus-table td {
+    padding: 18px 15px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    font-size: 14px;
+    transition: var(--transition);
+    vertical-align: middle;
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.verifyplus-table tr:hover {
+    background: inherit;
+    transform: none;
+}
+
+.verifyplus-table tr:hover td {
+    background: inherit;
+}
+
+/* Enhanced table header styling */
+.verifyplus-table thead {
+    position: sticky;
+    top: 0;
+    z-index: 3;
+}
+
+.verifyplus-table thead th {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Better table row styling */
+.verifyplus-table tbody tr:nth-child(even) td {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.verifyplus-table tbody tr:nth-child(odd) td {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.verifyplus-table tbody tr:hover td {
+    background: rgba(102, 126, 234, 0.1) !important;
+}
+
+/* Enhanced action buttons in tables */
+.verifyplus-table .action-buttons {
+    display: flex;
+    gap: 5px;
+    justify-content: center;
+}
+
+/* Action column width */
+.verifyplus-table th:last-child,
+.verifyplus-table td:last-child {
+    width: 60px !important;
+    min-width: 60px !important;
+    max-width: 60px !important;
+}
+
+.verifyplus-table .action-button {
+    padding: 8px 12px;
+    border: none;
+    border-radius: var(--border-radius-sm);
+    font-size: 12px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: var(--transition);
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+.verifyplus-table .action-button.delete {
+    background: var(--danger-gradient);
+    color: white;
+}
+
+/* Ensure delete button icons and text are white */
+.verifyplus-table .action-button.delete .dashicons,
+.action-button.delete .dashicons,
+.verifyplus-button.danger .dashicons {
+    color: #ffffff !important;
+}
+
+.verifyplus-table .action-button.delete,
+.action-button.delete,
+.verifyplus-button.danger {
+    color: #ffffff !important;
+}
+
+/* Force white text on all delete buttons */
+.verifyplus-table .action-button.delete *,
+.action-button.delete *,
+.verifyplus-button.danger * {
+    color: #ffffff !important;
+}
+
+.verifyplus-table .action-button:hover {
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-md);
+}
+
+/* Code Badge */
+.code-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    box-shadow: var(--shadow-sm);
+    font-family: 'Courier New', monospace;
+}
+
+/* Date Badge */
+.date-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 500;
+    background: rgba(102, 126, 234, 0.1);
+    color: var(--text-primary);
+    border: 1px solid rgba(102, 126, 234, 0.2);
+}
+
+.status-badge:hover::before {
+    left: 100%;
+}
+
+.status-badge.success {
+    background: var(--success-gradient);
+    color: white;
+}
+
+.status-badge.error {
+    background: var(--danger-gradient);
+    color: white;
+}
+
+.status-badge.warning {
+    background: var(--warning-gradient);
+    color: white;
+}
+
+/* ==========================================================================
+   Modern Statistics Cards
+   ========================================================================== */
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+    margin-bottom: 40px;
+}
+
+.stat-card {
+    background: rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: var(--border-radius-lg);
+    padding: 30px;
+    box-shadow: var(--shadow-lg);
+    text-align: center;
+    transition: var(--transition);
+    position: relative;
+    overflow: hidden;
+}
+
+.stat-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: var(--primary-gradient);
+}
+
+.stat-card::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(102, 126, 234, 0.05) 0%, transparent 70%);
+    transition: var(--transition);
+}
+
+.stat-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-xl);
+}
+
+.stat-card:hover::after {
+    transform: rotate(180deg);
+}
+
+.stat-number {
+    font-size: 3em;
+    font-weight: 800;
+    color: var(--text-primary);
+    margin-bottom: 10px;
+    display: block;
+    position: relative;
+    z-index: 1;
+}
+
+.stat-label {
+    font-size: 14px;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-weight: 600;
+    position: relative;
+    z-index: 1;
+}
+
+/* ==========================================================================
+   Modern Action Buttons
+   ========================================================================== */
+
+.action-buttons,
+.action-group {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-bottom: 25px;
+    align-items: center;
+}
+
+.action-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 18px;
+    border: none;
+    border-radius: var(--border-radius-sm);
+    font-size: 12px;
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+    transition: var(--transition);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    box-shadow: var(--shadow-sm);
+}
+
+.action-button.delete {
+    background: var(--danger-gradient);
+    color: white;
+}
+
+.action-button.delete:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+.action-button.edit {
+    background: var(--primary-gradient);
+    color: white;
+}
+
+.action-button.edit:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+/* ==========================================================================
+   Modern Color Picker Styles
+   ========================================================================== */
+
+.color-picker-group {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.color-picker {
+    width: 60px;
+    height: 45px;
+    border: 3px solid var(--border-color);
+    border-radius: var(--border-radius-sm);
+    cursor: pointer;
+    transition: var(--transition);
+    box-shadow: var(--shadow-sm);
+}
+
+.color-picker:hover {
+    transform: scale(1.1);
+    box-shadow: var(--shadow-md);
+    border-color: var(--primary-color);
+}
+
+/* ==========================================================================
+   Modern File Upload Styles
+   ========================================================================== */
+
+.file-upload-area {
+    border: 3px dashed var(--border-color);
+    border-radius: var(--border-radius-lg);
+    padding: 50px;
+    text-align: center;
+    transition: var(--transition);
+    background: rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+
+.file-upload-area::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(102, 126, 234, 0.1), transparent);
+    transition: left 0.8s ease;
+}
+
+.file-upload-area:hover::before {
+    left: 100%;
+}
+
+.file-upload-area:hover {
+    border-color: var(--primary-color);
+    background: rgba(102, 126, 234, 0.05);
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-lg);
+}
+
+.file-upload-area.dragover {
+    border-color: var(--primary-color);
+    background: rgba(102, 126, 234, 0.1);
+    transform: scale(1.02);
+    box-shadow: var(--shadow-xl);
+}
+
+.file-upload-icon {
+    font-size: 4em;
+    color: var(--primary-color);
+    margin-bottom: 20px;
+    transition: var(--transition);
+}
+
+.file-upload-area:hover .file-upload-icon {
+    transform: scale(1.1) rotate(5deg);
+}
+
+.file-upload-text {
+    font-size: 18px;
+    color: var(--text-primary);
+    margin-bottom: 15px;
+    font-weight: 600;
+}
+
+.file-upload-hint {
+    font-size: 14px;
+    color: var(--text-secondary);
+    font-style: italic;
+}
+
+/* ==========================================================================
+   Modern Loading States
+   ========================================================================== */
+
+.loading {
+    position: relative;
+    pointer-events: none;
+}
+
+.loading::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 24px;
+    height: 24px;
+    margin: -12px 0 0 -12px;
+    border: 3px solid rgba(102, 126, 234, 0.2);
+    border-top: 3px solid var(--primary-color);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* ==========================================================================
+   Modern Notifications
+   ========================================================================== */
+
+.verifyplus-notice {
+    padding: 20px 25px;
+    border-radius: var(--border-radius-sm);
+    margin-bottom: 25px;
+    border-left: 5px solid;
+    animation: slideInDown 0.5s ease;
+    background: rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    box-shadow: var(--shadow-md);
+    position: relative;
+    overflow: hidden;
+}
+
+.verifyplus-notice::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transition: left 0.6s ease;
+}
+
+.verifyplus-notice:hover::before {
+    left: 100%;
+}
+
+@keyframes slideInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.verifyplus-notice.success {
+    border-color: var(--success-color);
+    color: #155724;
+}
+
+.verifyplus-notice.error {
+    border-color: var(--danger-color);
+    color: #721c24;
+}
+
+.verifyplus-notice.warning {
+    border-color: var(--warning-color);
+    color: #856404;
+}
+
+.verifyplus-notice.info {
+    border-color: var(--primary-color);
+    color: #0c5460;
+}
+
+/* ==========================================================================
+   Modern Style Sections
+   ========================================================================== */
+
+.style-sections {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 30px;
+    margin: 25px 0;
+}
+
+.style-section {
+    background: rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: var(--border-radius-lg);
+    padding: 25px;
+    box-shadow: var(--shadow-md);
+    transition: var(--transition);
+    position: relative;
+    overflow: hidden;
+}
+
+.style-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: var(--primary-gradient);
+}
+
+.style-section:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-lg);
+}
+
+.style-section h3 {
+    margin-top: 0;
+    color: var(--text-primary);
+    border-bottom: 2px solid var(--border-color);
+    padding-bottom: 15px;
+    margin-bottom: 20px;
+    font-size: 1.3em;
+    font-weight: 700;
+    position: relative;
+}
+
+.style-section h3::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 50px;
+    height: 2px;
+    background: var(--primary-gradient);
+}
+
+/* ==========================================================================
+   Modern Responsive Design
+   ========================================================================== */
+
+@media (max-width: 768px) {
+    .verifyplus-admin-page {
+        padding: 15px;
+    }
+    
+    .nav-tab-wrapper {
+        flex-direction: column;
+    }
+    
+    .nav-tab {
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        min-width: auto;
+    }
+    
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+    
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .action-buttons,
+    .action-group {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    /* Enhanced table responsiveness */
+    .verifyplus-table-container {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        border-radius: var(--border-radius-md);
+    }
+    
+    .verifyplus-table {
+        font-size: 11px;
+        min-width: 800px; /* Ensure minimum width for all columns */
+    }
+    
+    .verifyplus-table th,
+    .verifyplus-table td {
+        padding: 8px 6px;
+        white-space: nowrap;
+        vertical-align: middle;
+    }
+    
+    /* Sticky first column for better navigation */
+    .verifyplus-table th:first-child,
+    .verifyplus-table td:first-child {
+        position: sticky;
+        left: 0;
+        background: inherit;
+        z-index: 2;
+        box-shadow: 2px 0 4px rgba(0, 0, 0, 0.1);
+    }
+    
+    /* Responsive badge adjustments */
+    .status-badge,
+    .code-badge,
+    .date-badge {
+        font-size: 9px;
+        padding: 3px 6px;
+        white-space: nowrap;
+    }
+    
+    /* Responsive action buttons */
+    .action-button {
+        padding: 6px 8px !important;
+        font-size: 10px !important;
+    }
+    
+    .action-button .dashicons {
+        font-size: 12px !important;
+    }
+    
+    .verifyplus-header h1 {
+        font-size: 2.2em;
+    }
+    
+    .verifyplus-content {
+        padding: 25px;
+    }
+    
+    .style-sections {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    .verifyplus-header {
+        padding: 25px;
+    }
+    
+    .verifyplus-header h1 {
+        font-size: 1.8em;
+    }
+    
+    .verifyplus-content {
+        padding: 20px;
+    }
+    
+    .nav-tab {
+        padding: 15px 20px;
+    }
+    
+    .stat-card {
+        padding: 25px;
+    }
+    
+    .stat-number {
+        font-size: 2.2em;
+    }
+    
+    .file-upload-area {
+        padding: 30px 20px;
+    }
+}
+
+/* ==========================================================================
+   Modern Light Mode Support (Default)
+   ========================================================================== */
+
+/* Force black text and icons in light mode */
+.verifyplus-admin-page,
+.verifyplus-admin-page * {
+    color: var(--text-primary) !important;
+}
+
+.verifyplus-admin-page .dashicons,
+.verifyplus-admin-page .dashicons-before::before {
+    color: var(--text-primary) !important;
+}
+
+.verifyplus-admin-page h1,
+.verifyplus-admin-page h2,
+.verifyplus-admin-page h3,
+.verifyplus-admin-page h4,
+.verifyplus-admin-page h5,
+.verifyplus-admin-page h6 {
+    color: var(--text-primary) !important;
+}
+
+.verifyplus-admin-page p,
+.verifyplus-admin-page span,
+.verifyplus-admin-page div,
+.verifyplus-admin-page label,
+.verifyplus-admin-page td,
+.verifyplus-admin-page th {
+    color: var(--text-primary) !important;
+}
+
+.verifyplus-admin-page .description,
+.verifyplus-admin-page .secondary-text,
+.verifyplus-admin-page small {
+    color: var(--text-secondary) !important;
+}
+
+/* ==========================================================================
+   Modern Dark Mode Support
+   ========================================================================== */
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --text-primary: #ffffff;
+        --text-secondary: #e0e0e0;
+        --text-light: #b0b0b0;
+        
+        --bg-primary: #2c3e50;
+        --bg-secondary: #34495e;
+        --bg-tertiary: #2c3e50;
+        
+        --border-color: #34495e;
+    }
+    
+    /* Force white text and icons in dark mode */
+    .verifyplus-admin-page,
+    .verifyplus-admin-page * {
+        color: var(--text-primary) !important;
+    }
+    
+    .verifyplus-admin-page .dashicons,
+    .verifyplus-admin-page .dashicons-before::before {
+        color: var(--text-primary) !important;
+    }
+    
+    .verifyplus-admin-page h1,
+    .verifyplus-admin-page h2,
+    .verifyplus-admin-page h3,
+    .verifyplus-admin-page h4,
+    .verifyplus-admin-page h5,
+    .verifyplus-admin-page h6 {
+        color: var(--text-primary) !important;
+    }
+    
+    .verifyplus-admin-page p,
+    .verifyplus-admin-page span,
+    .verifyplus-admin-page div,
+    .verifyplus-admin-page label,
+    .verifyplus-admin-page td,
+    .verifyplus-admin-page th {
+        color: var(--text-primary) !important;
+    }
+    
+    .verifyplus-admin-page .description,
+    .verifyplus-admin-page .secondary-text,
+    .verifyplus-admin-page small {
+        color: var(--text-secondary) !important;
+    }
+    
+    .verifyplus-admin-page {
+        background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+    }
+    
+    .verifyplus-content,
+    .verifyplus-header,
+    .nav-tab-wrapper,
+    .stat-card,
+    .style-section {
+        background: rgba(52, 73, 94, 0.25);
+        border-color: rgba(255, 255, 255, 0.1);
+    }
+    
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+        background: rgba(52, 73, 94, 0.8);
+        border-color: #34495e;
+        color: var(--text-primary);
+    }
+    
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+        border-color: var(--primary-color);
+        background: rgba(52, 73, 94, 0.95);
+    }
+    
+    .verifyplus-table {
+        background: rgba(52, 73, 94, 0.25);
+    }
+    
+    .verifyplus-table td {
+        border-bottom-color: rgba(255, 255, 255, 0.1);
+    }
+    
+    .verifyplus-table tr:hover {
+        background: inherit;
+    }
+    
+    .stat-number {
+        color: var(--text-primary);
+    }
+    
+    .stat-label {
+        color: var(--text-secondary);
+    }
+}
+
+/* ==========================================================================
+   Modern Accessibility Improvements
+   ========================================================================== */
+
+/* Enhanced Background and Layout */
+.verifyplus-admin-page {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+    min-height: 100vh !important;
+    padding: 20px !important;
+    position: relative !important;
+    z-index: 1 !important;
+}
+
+/* Enhanced Color Scheme */
+:root {
+    --primary-color: #667eea;
+    --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    --secondary-color: #764ba2;
+    --success-color: #46b450;
+    --success-gradient: linear-gradient(135deg, #46b450 0%, #389a3d 100%);
+    --danger-color: #dc3232;
+    --danger-gradient: linear-gradient(135deg, #dc3232 0%, #c62828 100%);
+    --warning-color: #ffb900;
+    --warning-gradient: linear-gradient(135deg, #ffb900 0%, #f57c00 100%);
+    
+    --text-primary: #000000;
+    --text-secondary: #333333;
+    --text-light: #555555;
+    
+    --border-radius-sm: 6px;
+    --border-radius-md: 8px;
+    --border-radius-lg: 12px;
+    
+    --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.1);
+    --shadow-md: 0 4px 8px rgba(0, 0, 0, 0.15);
+    --shadow-lg: 0 8px 16px rgba(0, 0, 0, 0.2);
+    
+    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Ensure proper text contrast */
+.verifyplus-admin-page,
+.verifyplus-admin-page * {
+    color-scheme: light;
+}
+
+/* Force better contrast for all text elements */
+.verifyplus-admin-page p,
+.verifyplus-admin-page span,
+.verifyplus-admin-page div,
+.verifyplus-admin-page label,
+.verifyplus-admin-page td,
+.verifyplus-admin-page th {
+    color: var(--text-primary) !important;
+}
+
+/* Ensure secondary text has good contrast */
+.verifyplus-admin-page .description,
+.verifyplus-admin-page .secondary-text,
+.verifyplus-admin-page small {
+    color: var(--text-secondary) !important;
+}
+
+/* Focus indicators */
+.verifyplus-button:focus,
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus,
+.nav-tab:focus {
+    outline: 3px solid var(--primary-color);
+    outline-offset: 2px;
+}
+
+/* Screen reader only text */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+    .verifyplus-button {
+        border: 2px solid currentColor;
+    }
+    
+    .verifyplus-table th,
+    .verifyplus-table td {
+        border: 1px solid currentColor;
+    }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* ==========================================================================
+   Modern Animations and Effects
+   ========================================================================== */
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+}
+
+.verifyplus-section {
+    animation: fadeInUp 0.6s ease;
+}
+
+.stat-card:hover {
+    animation: pulse 2s infinite;
+}
+
+/* ==========================================================================
+   Modern Utility Classes
+   ========================================================================== */
+
+.text-center { text-align: center; }
+.text-left { text-align: left; }
+.text-right { text-align: right; }
+
+.mb-0 { margin-bottom: 0; }
+.mb-1 { margin-bottom: 0.5rem; }
+.mb-2 { margin-bottom: 1rem; }
+.mb-3 { margin-bottom: 1.5rem; }
+.mb-4 { margin-bottom: 2rem; }
+
+.mt-0 { margin-top: 0; }
+.mt-1 { margin-top: 0.5rem; }
+.mt-2 { margin-top: 1rem; }
+.mt-3 { margin-top: 1.5rem; }
+.mt-4 { margin-top: 2rem; }
+
+.p-0 { padding: 0; }
+.p-1 { padding: 0.5rem; }
+.p-2 { padding: 1rem; }
+.p-3 { padding: 1.5rem; }
+.p-4 { padding: 2rem; }
+
+.d-none { display: none; }
+.d-block { display: block; }
+.d-flex { display: flex; }
+.d-grid { display: grid; }
+
+.justify-center { justify-content: center; }
+.justify-between { justify-content: space-between; }
+.justify-around { justify-content: space-around; }
+
+.align-center { align-items: center; }
+.align-start { align-items: flex-start; }
+.align-end { align-items: flex-end; }
+
+/* ==========================================================================
+   Dashboard Specific Overrides
+   ========================================================================== */
+
+/* Override WordPress default page title */
+.wp-admin .verifyplus-admin-page h1.wp-heading-inline,
+.wp-admin .verifyplus-admin-page .page-title {
+    display: none !important;
+}
+
+/* Override WordPress default content area */
+.wp-admin .verifyplus-admin-page #wpcontent {
+    background: transparent !important;
+    padding-left: 0 !important;
+}
+
+.wp-admin .verifyplus-admin-page #wpbody {
+    background: transparent !important;
+}
+
+.wp-admin .verifyplus-admin-page #wpbody-content {
+    background: transparent !important;
+    padding-bottom: 0 !important;
+}
+
+/* Ensure proper spacing */
+.wp-admin .verifyplus-admin-page .wrap {
+    max-width: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+/* Override any default WordPress admin styles */
+.wp-admin .verifyplus-admin-page .notice {
+    margin: 0 0 20px 0 !important;
+    border-radius: var(--border-radius-sm) !important;
+}
+
+.wp-admin .verifyplus-admin-page .button,
+.wp-admin .verifyplus-admin-page .button-primary {
+    background: var(--primary-gradient) !important;
+    border: none !important;
+    border-radius: var(--border-radius-sm) !important;
+    color: white !important;
+    padding: 10px 20px !important;
+    font-weight: 600 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.5px !important;
+    transition: var(--transition) !important;
+    box-shadow: var(--shadow-sm) !important;
+}
+
+.wp-admin .verifyplus-admin-page .button:hover,
+.wp-admin .verifyplus-admin-page .button-primary:hover {
+    transform: translateY(-2px) !important;
+    box-shadow: var(--shadow-md) !important;
+}
+
+/* Override form elements */
+.wp-admin .verifyplus-admin-page input[type="text"],
+.wp-admin .verifyplus-admin-page input[type="email"],
+.wp-admin .verifyplus-admin-page input[type="number"],
+.wp-admin .verifyplus-admin-page input[type="url"],
+.wp-admin .verifyplus-admin-page input[type="password"],
+.wp-admin .verifyplus-admin-page select,
+.wp-admin .verifyplus-admin-page textarea {
+    background: rgba(255, 255, 255, 0.8) !important;
+    backdrop-filter: blur(10px) !important;
+    border: 2px solid var(--border-color) !important;
+    border-radius: var(--border-radius-sm) !important;
+    padding: 15px 20px !important;
+    font-size: 14px !important;
+    font-weight: 500 !important;
+    transition: var(--transition) !important;
+}
+
+.wp-admin .verifyplus-admin-page input:focus,
+.wp-admin .verifyplus-admin-page select:focus,
+.wp-admin .verifyplus-admin-page textarea:focus {
+    outline: none !important;
+    border-color: var(--primary-color) !important;
+    box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.1) !important;
+    transform: translateY(-2px) !important;
+    background: rgba(255, 255, 255, 0.95) !important;
+}
+
+/* Enhanced Form Table Styling */
+.wp-admin .verifyplus-admin-page .form-table {
+    background: rgba(255, 255, 255, 0.25) !important;
+    backdrop-filter: blur(20px) !important;
+    border-radius: var(--border-radius-lg) !important;
+    border: 1px solid rgba(255, 255, 255, 0.18) !important;
+    box-shadow: var(--shadow-md) !important;
+    overflow: hidden !important;
+}
+
+.wp-admin .verifyplus-admin-page .form-table th {
+    background: var(--primary-gradient) !important;
+    color: white !important;
+    padding: 20px 25px !important;
+    font-weight: 600 !important;
+    font-size: 14px !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.5px !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+.wp-admin .verifyplus-admin-page .form-table td {
+    background: rgba(255, 255, 255, 0.1) !important;
+    padding: 20px 25px !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05) !important;
+    vertical-align: top !important;
+}
+
+.wp-admin .verifyplus-admin-page .form-table tr:last-child td {
+    border-bottom: none !important;
+}
+
+.wp-admin .verifyplus-admin-page .form-table tr:hover td {
+    background: rgba(255, 255, 255, 0.15) !important;
+}
+
+/* Enhanced Checkbox and Label Styling */
+.wp-admin .verifyplus-admin-page .form-table label {
+    color: var(--text-primary) !important;
+    font-weight: 500 !important;
+    margin-bottom: 8px !important;
+    display: block !important;
+}
+
+.wp-admin .verifyplus-admin-page .form-table input[type="checkbox"] {
+    margin-right: 8px !important;
+    transform: scale(1.2) !important;
+}
+
+.wp-admin .verifyplus-admin-page .form-table input[type="text"] {
+    width: 300px !important;
+    margin-top: 5px !important;
+    background: rgba(255, 255, 255, 0.9) !important;
+    border: 1px solid rgba(0, 0, 0, 0.1) !important;
+    border-radius: var(--border-radius-sm) !important;
+    padding: 10px 12px !important;
+    font-size: 14px !important;
+    transition: var(--transition) !important;
+}
+
+.wp-admin .verifyplus-admin-page .form-table input[type="text"]:focus {
+    outline: none !important;
+    border-color: var(--primary-color) !important;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1) !important;
+    background: rgba(255, 255, 255, 1) !important;
+}
+
+/* Override table styles */
+.wp-admin .verifyplus-admin-page .wp-list-table {
+    background: rgba(255, 255, 255, 0.25) !important;
+    backdrop-filter: blur(20px) !important;
+    -webkit-backdrop-filter: blur(20px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.18) !important;
+    border-radius: var(--border-radius-lg) !important;
+    overflow: hidden !important;
+    box-shadow: var(--shadow-lg) !important;
+}
+
+.wp-admin .verifyplus-admin-page .wp-list-table th {
+    background: var(--primary-gradient) !important;
+    color: white !important;
+    padding: 20px 15px !important;
+    font-weight: 600 !important;
+    font-size: 13px !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.5px !important;
+}
+
+.wp-admin .verifyplus-admin-page .wp-list-table td {
+    padding: 18px 15px !important;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05) !important;
+    font-size: 14px !important;
+    transition: var(--transition) !important;
+}
+
+.wp-admin .verifyplus-admin-page .wp-list-table tr:hover {
+    background: rgba(102, 126, 234, 0.05) !important;
+    transform: scale(1.01) !important;
+}

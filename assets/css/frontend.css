@@ -1,0 +1,767 @@
+/**
+ * Code Authentication Frontend Styles
+ * 
+ * Styles for the frontend authentication form and popup
+ * 
+ * @since 1.0.0
+ */
+
+/* ==========================================================================
+   Form Container
+   ========================================================================== */
+
+.verifyplus-form-container {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+    line-height: 1.6;
+    color: #333;
+}
+
+/* ==========================================================================
+   Form Styles
+   ========================================================================== */
+
+.verifyplus-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    position: relative;
+}
+
+.form-group label {
+    font-weight: 500;
+    color: #333;
+    font-size: 0.95em;
+    margin-bottom: 5px;
+    display: block;
+}
+
+.form-group input,
+.form-group select {
+    width: 100%;
+    padding: 12px 15px;
+    border: 2px solid #e1e5e9;
+    border-radius: 8px;
+    font-size: 16px;
+    color: #000000; /* Ensure black text by default */
+    transition: all 0.3s ease;
+    background: #fff;
+    box-sizing: border-box;
+    font-family: inherit;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+    outline: none;
+    border-color: #007cba;
+    box-shadow: 0 0 0 3px rgba(0, 124, 186, 0.1);
+    transform: translateY(-1px);
+}
+
+.form-group input::placeholder,
+.form-group select::placeholder {
+    color: #999;
+    opacity: 1;
+}
+
+/* ==========================================================================
+   Validation States
+   ========================================================================== */
+
+.form-group.error input,
+.form-group.error select {
+    border-color: #dc3232;
+    box-shadow: 0 0 0 3px rgba(220, 50, 50, 0.1);
+}
+
+.form-group.success input,
+.form-group.success select {
+    border-color: #46b450;
+    box-shadow: 0 0 0 3px rgba(70, 180, 80, 0.1);
+}
+
+.error-message {
+    color: #dc3232;
+    font-size: 0.85em;
+    margin-top: 5px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.error-message::before {
+    content: "⚠";
+    font-size: 1.2em;
+}
+
+/* ==========================================================================
+   Button Styles
+   ========================================================================== */
+
+.btn-primary {
+    background: linear-gradient(135deg, #007cba 0%, #005a87 100%);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 14px 28px;
+    font-size: 16px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: inherit;
+    position: relative;
+    overflow: hidden;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.btn-primary::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s;
+}
+
+.btn-primary:hover::before {
+    left: 100%;
+}
+
+.btn-primary:hover {
+    background: linear-gradient(135deg, #005a87 0%, #004466 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 124, 186, 0.3);
+}
+
+.btn-primary:active {
+    transform: translateY(0);
+}
+
+.btn-primary:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none !important;
+    box-shadow: none !important;
+}
+
+.btn-primary.loading {
+    pointer-events: none;
+}
+
+.btn-primary.loading::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 20px;
+    height: 20px;
+    margin: -10px 0 0 -10px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-top: 2px solid white;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* ==========================================================================
+   Loading Indicator
+   ========================================================================== */
+
+.verifyplus-loader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    color: white;
+    backdrop-filter: blur(5px);
+}
+
+.loader-spinner {
+    width: 50px;
+    height: 50px;
+    border: 4px solid rgba(255, 255, 255, 0.3);
+    border-top: 4px solid white;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin-bottom: 20px;
+}
+
+.verifyplus-loader p {
+    font-size: 16px;
+    font-weight: 500;
+    margin: 0;
+    text-align: center;
+}
+
+/* ==========================================================================
+   Popup Styles
+   ========================================================================== */
+
+.verifyplus-popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 10000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: popupFadeIn 0.3s ease;
+    max-width: 100%;
+}
+
+@keyframes popupFadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.popup-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(3px);
+}
+
+.popup-content {
+    position: relative;
+    background: white;
+    border-radius: 12px;
+    padding: 30px;
+    max-width: 100%;
+    width: 90%;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    animation: popupSlideIn 0.3s ease;
+    text-align: center;
+}
+
+@keyframes popupSlideIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9) translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+.popup-close {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    background: none;
+    border: none;
+    font-size: 28px;
+    cursor: pointer;
+    color: #999;
+    transition: all 0.3s ease;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.popup-close:hover {
+    color: #333;
+    background: #f5f5f5;
+    transform: scale(1.1);
+}
+
+.popup-header {
+    margin-bottom: 20px;
+}
+
+.popup-title {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 700;
+    color: #333;
+}
+
+.popup-body {
+    margin-bottom: 20px;
+}
+
+.popup-message {
+    font-size: 16px;
+    line-height: 1.6;
+    color: #666;
+}
+
+.popup-message h1,
+.popup-message h2,
+.popup-message h3,
+.popup-message h4,
+.popup-message h5,
+.popup-message h6 {
+    margin-top: 0;
+    margin-bottom: 15px;
+    color: #333;
+}
+
+.popup-message p {
+    margin-bottom: 15px;
+}
+
+.popup-message p:last-child {
+    margin-bottom: 0;
+}
+
+.popup-message ul,
+.popup-message ol {
+    margin-bottom: 15px;
+    padding-left: 20px;
+}
+
+.popup-message li {
+    margin-bottom: 5px;
+}
+
+/* Popup success/error states */
+.popup-content.success {
+    border-left: 5px solid #46b450;
+}
+
+.popup-content.success .popup-title {
+    color: #46b450;
+}
+
+.popup-content.error {
+    border-left: 5px solid #dc3232;
+}
+
+.popup-content.error .popup-title {
+    color: #dc3232;
+}
+
+/* ==========================================================================
+   Inline Message Styles
+   ========================================================================== */
+
+.verifyplus-message {
+    margin: 20px 0;
+    padding: 15px 20px;
+    border-radius: 8px;
+    position: relative;
+    animation: messageSlideIn 0.3s ease;
+    border-left: 4px solid;
+}
+
+@keyframes messageSlideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.verifyplus-message.success {
+    background: #d4edda;
+    border-color: #46b450;
+    color: #155724;
+}
+
+.verifyplus-message.error {
+    background: #f8d7da;
+    border-color: #dc3232;
+    color: #721c24;
+}
+
+.message-content {
+    margin-right: 30px;
+}
+
+.message-content h1,
+.message-content h2,
+.message-content h3,
+.message-content h4,
+.message-content h5,
+.message-content h6 {
+    margin-top: 0;
+    margin-bottom: 10px;
+    color: inherit;
+}
+
+.message-content p {
+    margin-bottom: 10px;
+}
+
+.message-content p:last-child {
+    margin-bottom: 0;
+}
+
+.message-close {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    color: inherit;
+    opacity: 0.7;
+    transition: opacity 0.3s ease;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.message-close:hover {
+    opacity: 1;
+    background: rgba(0, 0, 0, 0.1);
+}
+
+/* ==========================================================================
+   Form Loading State
+   ========================================================================== */
+
+.verifyplus-form.loading {
+    pointer-events: none;
+    opacity: 0.7;
+}
+
+.verifyplus-form.loading .form-group {
+    opacity: 0.5;
+}
+
+/* ==========================================================================
+   Responsive Design
+   ========================================================================== */
+
+@media (max-width: 768px) {
+    .verifyplus-form-container {
+        margin: 10px;
+    }
+    
+    .popup-content {
+        width: 95%;
+        padding: 20px;
+        margin: 20px;
+    }
+    
+    .popup-title {
+        font-size: 20px;
+    }
+    
+    .popup-message {
+        font-size: 14px;
+    }
+    
+    .btn-primary {
+        padding: 12px 24px;
+        font-size: 14px;
+    }
+    
+    .form-group input,
+    .form-group select {
+        font-size: 16px; /* Prevent zoom on iOS */
+        padding: 12px 15px;
+    }
+    
+    .loader-spinner {
+        width: 40px;
+        height: 40px;
+    }
+    
+    .verifyplus-loader p {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 480px) {
+    .popup-content {
+        padding: 15px;
+        margin: 10px;
+    }
+    
+    .popup-title {
+        font-size: 18px;
+    }
+    
+    .popup-message {
+        font-size: 13px;
+    }
+    
+    .btn-primary {
+        padding: 10px 20px;
+        font-size: 13px;
+    }
+    
+    .form-group {
+        gap: 6px;
+    }
+    
+    .form-group label {
+        font-size: 0.9em;
+    }
+}
+
+/* ==========================================================================
+   High Contrast Mode Support
+   ========================================================================== */
+
+@media (prefers-contrast: high) {
+    .form-group input,
+    .form-group select {
+        border-width: 3px;
+    }
+    
+    .btn-primary {
+        border: 2px solid currentColor;
+    }
+    
+    .popup-content {
+        border: 2px solid currentColor;
+    }
+    
+    .verifyplus-message {
+        border-width: 3px;
+    }
+}
+
+/* ==========================================================================
+   Reduced Motion Support
+   ========================================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+    
+    .btn-primary::before {
+        display: none;
+    }
+}
+
+/* ==========================================================================
+   Dark Mode Support
+   ========================================================================== */
+
+@media (prefers-color-scheme: dark) {
+    .verifyplus-form-container {
+        color: #fff;
+    }
+    
+    .form-group label {
+        color: #fff;
+    }
+    
+    .form-group input,
+    .form-group select {
+        background: #2d2d2d;
+        border-color: #555;
+        color: #000000;
+    }
+    
+    .form-group input:focus,
+    .form-group select:focus {
+        border-color: #007cba;
+        background: #3d3d3d;
+    }
+    
+    .form-group input::placeholder,
+    .form-group select::placeholder {
+        color: #222222;
+    }
+    
+    .popup-content {
+        background: #2d2d2d;
+        color: #fff;
+    }
+    
+    .popup-title {
+        color: #fff;
+    }
+    
+    .popup-message {
+        color: #ccc;
+    }
+    
+    .popup-close {
+        color: #ccc;
+    }
+    
+    .popup-close:hover {
+        color: #fff;
+        background: #000000;
+    }
+    
+    .verifyplus-message.success {
+        background: #1e3a1e;
+        color: #a8e6a8;
+    }
+    
+    .verifyplus-message.error {
+        background: #3a1e1e;
+        color: #e6a8a8;
+    }
+}
+
+/* ==========================================================================
+   Print Styles
+   ========================================================================== */
+
+@media print {
+    .verifyplus-loader,
+    .verifyplus-popup,
+    .verifyplus-message {
+        display: none !important;
+    }
+    
+    .verifyplus-form-container {
+        color: #000 !important;
+        background: #fff !important;
+    }
+    
+    .form-group input,
+    .form-group select {
+        border: 1px solid #000 !important;
+        background: #fff !important;
+        color: #000 !important;
+    }
+    
+    .btn-primary {
+        background: #000 !important;
+        color: #fff !important;
+        border: 1px solid #000 !important;
+    }
+}
+
+/* ==========================================================================
+   Focus Management
+   ========================================================================== */
+
+/* Ensure focus is visible */
+.form-group input:focus,
+.form-group select:focus,
+.btn-primary:focus,
+.popup-close:focus,
+.message-close:focus {
+    outline: 2px solid #007cba;
+    outline-offset: 2px;
+}
+
+/* Skip link for accessibility */
+.verifyplus-skip-link {
+    position: absolute;
+    top: -40px;
+    left: 6px;
+    background: #007cba;
+    color: white;
+    padding: 8px;
+    text-decoration: none;
+    border-radius: 4px;
+    z-index: 10001;
+}
+
+.verifyplus-skip-link:focus {
+    top: 6px;
+}
+
+/* ==========================================================================
+   Custom Scrollbar
+   ========================================================================== */
+
+.popup-content::-webkit-scrollbar {
+    width: 8px;
+}
+
+.popup-content::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 4px;
+}
+
+.popup-content::-webkit-scrollbar-thumb {
+    background: #c1c1c1;
+    border-radius: 4px;
+}
+
+.popup-content::-webkit-scrollbar-thumb:hover {
+    background: #a8a8a8;
+}
+
+/* ==========================================================================
+   Animation Utilities
+   ========================================================================== */
+
+.fade-in {
+    animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.slide-up {
+    animation: slideUp 0.3s ease;
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.scale-in {
+    animation: scaleIn 0.3s ease;
+}
+
+@keyframes scaleIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
